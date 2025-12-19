@@ -65,7 +65,7 @@ echo "<p>Bienvenue " . htmlspecialchars($pseudo) . "</p>";
         if ($_POST['number'] % 6 === 0) {
             echo rand(1, $_POST['number']);
         } else {
-            header('Location: http://localhost/exo_formulaire/exo4.php?error=true');
+            header('Location: ');
             exit();
         }
     }
