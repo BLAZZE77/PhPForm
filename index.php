@@ -63,6 +63,7 @@ echo "<p>Bienvenue " . htmlspecialchars($pseudo) . "</p>";
 
     <?php
     if (isset($_POST['number'])) {
+    
         if ($_POST['number'] % 6 === 0) {
             echo rand(1, $_POST['number']);
         } else {
@@ -113,18 +114,43 @@ echo "<p>Bienvenue " . htmlspecialchars($pseudo) . "</p>";
 
    <h1>exercice 6</h1> 
     <form action="index.php" method="POST">
-        <label for="nbf"> nb1 :</label>
-        <input type="text" id="calculf" name="calculf">
-        <label for="password"> nb2 :</label>
-        <input type="nbs" id="calculs" name="calculs">
-        <label for="operateur"></label>
-        <input type="select" id="operateur" name="operateur" >
+        <label for="number1"> nb1 :</label>
+        <input type="number" id="calculf" name="number1">
+        <label for="number2"> nb2 :</label>
+        <input type="number" id="calculs" name="number2">
+        
+        <select name="operateur" id="operateur">
         <option value="addition">Addition</option>
         <option value="soustraction">Soustraction</option>
         <option value="multiplication">Multiplication</option>
         <option value="division">Division</option>
+        </select>
+
         <input type="submit">
     </form>
+
+    <?php 
+
+          if( isset($_POST["number1"]) &&  isset($_POST["number2"])) {
+                $nb1 = $_POST["number1"];
+                $nb2 = $_POST["number2"];
+                $operateur = $_POST["operateur"];
+                $resultat  = 0;
+                if ($operateur ===  "addition"){
+                    $resultat = $nb1 + $nb2;
+                }
+                if ($operateur ===  "soustraction"){
+                    $resultat = $nb1 - $nb2;
+                }
+                if ($operateur ===  "multiplications"){
+                    $resultat = $nb1 * $nb2;
+                }
+                if ($operateur ===  "division"){
+                    $resultat = $nb1 % $nb2;
+                }
+                echo $resultat ;
+          }
+    ?>
 
 
 
