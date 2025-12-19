@@ -26,6 +26,7 @@
         <input type="text" id="animal" name="animal">
         <input type="submit">
     </form>
+    
     <?php 
         if(isset($_GET["animal"])) {
             $animal = $_GET['animal'];
@@ -55,7 +56,7 @@ echo "<p>Bienvenue " . htmlspecialchars($pseudo) . "</p>";
 
 ?>
     <h1>exercice 4</h1>
-    <form action="exo4.php" method="POST">
+    <form action="index.php" method="POST">
         <input type="number" name="number" id="number">
         <input type="submit">
     </form>
@@ -65,13 +66,13 @@ echo "<p>Bienvenue " . htmlspecialchars($pseudo) . "</p>";
         if ($_POST['number'] % 6 === 0) {
             echo rand(1, $_POST['number']);
         } else {
-            header('Location: ');
+            header('Location: http://localhost/exo_formulaire/index.php?errornbr=true');
             exit();
         }
     }
 
-    if (isset($_GET['error'])) {
-        if ($_GET['error'] === "true") {
+    if (isset($_GET['errornbr'])) {
+        if ($_GET['errornbr'] === "true") {
             echo "<p>le nombre n'est pas valide</p>";
         }
     }
@@ -81,7 +82,36 @@ echo "<p>Bienvenue " . htmlspecialchars($pseudo) . "</p>";
 
 
 
-    <h1>Exo 5</h1>
+
+<h1>exercice 5</h1>
+
+
+    <form action="index.php" method="POST">
+        <label for="username"> nom d'utilisateur :</label>
+        <input type="text" id="username" name="username">
+        <label for="password"> password :</label>
+        <input type="text" id="password" name="password">
+        <input type="submit">
+    </form>
+   
+   <?php 
+    $username = 'admin';
+    $password = 1234;
+    $errorlogin = false;
+       
+    if( isset($_POST["username"], $_POST["password"]) && $_POST["username"] == $username &&$_POST["password"] == $password ){
+        header('Location: http://localhost/exo_formulaire/connexion.php');
+        exit();
+    }else{
+        $errorlogin = true;
+    }
+        
+    if ($errorlogin === true ){  ?>
+    <p>Mot de passe ou nom d'utilisateur incorrect.</p>
+   <?php } ?>
+
+
+
 
   </body>
  </html>
