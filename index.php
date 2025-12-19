@@ -97,18 +97,36 @@ echo "<p>Bienvenue " . htmlspecialchars($pseudo) . "</p>";
    <?php 
     $username = 'admin';
     $password = 1234;
-    $errorlogin = false;
-       
-    if( isset($_POST["username"], $_POST["password"]) && $_POST["username"] == $username &&$_POST["password"] == $password ){
-        header('Location: http://localhost/exo_formulaire/connexion.php');
-        exit();
-    }else{
-        $errorlogin = true;
+  
+    
+    if( isset($_POST["username"]) &&  isset($_POST["password"])){
+        if ($_POST["username"] == $username &&$_POST["password"] == $password ){
+            header('Location: http://localhost/exo_formulaire/connexion.php');
+            exit();
+        }else{
+            echo "<p>Mot de passe ou nom d'utilisateur incorrect.</p>";
+        } 
     }
-        
-    if ($errorlogin === true ){  ?>
-    <p>Mot de passe ou nom d'utilisateur incorrect.</p>
-   <?php } ?>
+     ?>
+
+
+
+   <h1>exercice 6</h1> 
+    <form action="index.php" method="POST">
+        <label for="nbf"> nb1 :</label>
+        <input type="text" id="calculf" name="calculf">
+        <label for="password"> nb2 :</label>
+        <input type="nbs" id="calculs" name="calculs">
+        <label for="operateur"></label>
+        <input type="select" id="operateur" name="operateur" >
+        <option value="addition">Addition</option>
+        <option value="soustraction">Soustraction</option>
+        <option value="multiplication">Multiplication</option>
+        <option value="division">Division</option>
+        <input type="submit">
+    </form>
+
+
 
 
 
